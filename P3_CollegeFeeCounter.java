@@ -3,7 +3,7 @@
  * Abstract Student + BusUser interface for those who use the bus
  */
 interface BusUser {
-    double getTransportFee();
+    double TRANSPORT_FEE = 12000; // shared constant in one place
 }
 
 abstract class Student {
@@ -15,7 +15,7 @@ abstract class Student {
 
     abstract double getTuition();
 
-    // Default: no bus
+    // Default: no bus fee
     double getTransportFee() {
         return 0.0;
     }
@@ -34,10 +34,7 @@ class DayScholar extends Student implements BusUser {
     double getTuition() { return 40000; }
 
     @Override
-    public double getTransportFee() { return 12000; }
-
-    @Override
-    double getTransportFee() { return 12000; } // shadow for total calculation
+    double getTransportFee() { return TRANSPORT_FEE; }
 }
 
 class Hosteller extends Student {
@@ -56,10 +53,7 @@ class Scholar extends Student implements BusUser {
     double getTuition() { return 20000; } // half tuition
 
     @Override
-    public double getTransportFee() { return 12000; }
-
-    @Override
-    double getTransportFee() { return 12000; }
+    double getTransportFee() { return TRANSPORT_FEE; }
 }
 
 public class P3_CollegeFeeCounter {
